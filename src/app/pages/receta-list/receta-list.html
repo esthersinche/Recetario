@@ -1,0 +1,21 @@
+<div class="container my-5">
+  <h2 class="mb-4 text-center">📚 Listado de Recetas</h2>
+
+  <div class="text-end mb-3">
+    <a routerLink="/recetas/nueva" class="btn btn-success">➕ Nueva Receta</a>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let receta of recetas">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">{{ receta.nombre }}</h5>
+          <p class="card-text"><strong>Categoría:</strong> {{ receta.categoria }}</p>
+
+          <a [routerLink]="['/recetas', receta.id]" class="btn btn-primary btn-sm me-2">👀 Ver Detalle</a>
+          <button (click)="eliminarReceta(receta.id!)" class="btn btn-outline-danger btn-sm">🗑️ Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

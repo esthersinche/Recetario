@@ -1,0 +1,18 @@
+<div class="container my-5" *ngIf="receta">
+  <div class="card shadow p-4">
+    <h2>{{ receta.nombre }}</h2>
+    <p><strong>Categoría:</strong> {{ receta.categoria }}</p>
+
+    <h5>🥗 Ingredientes:</h5>
+    <p>{{ receta.ingredientes }}</p>
+
+    <h5>📖 Preparación:</h5>
+    <p>{{ receta.preparacion }}</p>
+
+    <div *ngIf="receta.imagen_url" class="mt-3">
+      <img [src]="receta.imagen_url" alt="Imagen receta" class="img-fluid rounded" />
+    </div>
+
+    <a routerLink="/recetas" class="btn btn-outline-primary mt-4">↩️ Volver a la Lista</a>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="container my-5">
+  <h2 class="mb-4 text-center">🍳 Nueva Receta</h2>
+
+  <form (ngSubmit)="guardarReceta()" class="p-4 border rounded bg-light">
+    <div class="mb-3">
+      <label class="form-label">Nombre:</label>
+      <input [(ngModel)]="receta.nombre" name="nombre" required class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Ingredientes:</label>
+      <textarea [(ngModel)]="receta.ingredientes" name="ingredientes" class="form-control"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Preparación:</label>
+      <textarea [(ngModel)]="receta.preparacion" name="preparacion" class="form-control"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Categoría:</label>
+      <input [(ngModel)]="receta.categoria" name="categoria" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Imagen URL:</label>
+      <input [(ngModel)]="receta.imagen_url" name="imagen_url" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-success">💾 Guardar</button>
+    <a routerLink="/recetas" class="btn btn-secondary ms-2">↩️ Volver</a>
+  </form>
+</div>
