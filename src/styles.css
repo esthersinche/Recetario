@@ -1,0 +1,82 @@
+:root {
+    /* Light theme */
+    --bg: #ffffff;
+    --text: #333333;
+    --txt-line: #725681;
+    --card-bg: #dac9df;
+    /* lavender claro */
+    --card-border: #81638b;
+    --btn-bg: #503459;
+    --btn-text: #ffffff;
+    --badge-pend: #81638b;
+    --badge-done: #503459;
+}
+
+[data-theme="dark"] {
+    /* Dark theme */
+    --bg: #1a1a1a;
+    --text: #eeeeee;
+    --card-bg: #503459;
+    --txt-line: #bba7be;
+    /* morado oscuro */
+    --card-border: #81638b;
+    --btn-bg: #81638b;
+    --btn-text: #ffffff;
+    --badge-pend: #b695c0;
+    --badge-done: #dac9df;
+}
+
+/* Clases “theme” */
+body {
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+.card-purple {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--text);
+}
+
+.btn-purple {
+    background-color: var(--card-bg) !important;
+    background-image: none !important;
+    opacity: 1 !important;
+    border: 1px solid var(--card-border);
+    color: var(--text);
+}
+
+.btn-purple:hover {
+    opacity: 0.9;
+}
+
+.badge-pending {
+    background-color: var(--badge-pend) !important;
+}
+
+.badge-done {
+    background-color: var(--badge-done) !important;
+}
+
+[data-theme="dark"] .badge-done{
+    color: var(--bg);
+}
+
+.btn-outline-purple {
+    border-color: var(--btn-bg) !important;
+    color: var(--text) !important;
+}
+
+.btn-outline-purple:hover {
+    background-color: var(--btn-bg) !important;
+    color: var(--bg) !important;
+}
+
+.text-decoration-line-through {
+    text-decoration: line-through;
+    color: var(--txt-line) !important;
+}
+
+.list-group-item {
+     color: var(--text) !important;
+}

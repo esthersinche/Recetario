@@ -1,33 +1,44 @@
 <div class="container my-5">
-  <h2 class="mb-4 text-center">🍳 Nueva Receta</h2>
+  <h2 class="mb-4 text-center text-purple">🍳 Nueva Receta</h2>
 
-  <form (ngSubmit)="guardarReceta()" class="p-4 border rounded bg-light">
+  <form (ngSubmit)="guardarReceta()" class="card card-purple shadow-sm rounded-2 p-4">
     <div class="mb-3">
-      <label class="form-label">Nombre:</label>
-      <input [(ngModel)]="receta.nombre" name="nombre" required class="form-control">
+      <label class="form-label fw-semibold">Nombre:</label>
+      <input [(ngModel)]="receta.nombre" name="nombre" required class="form-control border-1"
+        placeholder="Ingresa el nombre de la receta" />
     </div>
 
     <div class="mb-3">
-      <label class="form-label">Ingredientes:</label>
-      <textarea [(ngModel)]="receta.ingredientes" name="ingredientes" class="form-control"></textarea>
+      <label class="form-label fw-semibold">Ingredientes:</label>
+      <textarea [(ngModel)]="receta.ingredientes" name="ingredientes" class="form-control border-1" rows="3"
+        placeholder="Separados por comas"></textarea>
     </div>
 
     <div class="mb-3">
-      <label class="form-label">Preparación:</label>
-      <textarea [(ngModel)]="receta.preparacion" name="preparacion" class="form-control"></textarea>
+      <label class="form-label fw-semibold">Preparación:</label>
+      <textarea [(ngModel)]="receta.preparacion" name="preparacion" class="form-control border-1" rows="4"
+        placeholder="Describe paso a paso"></textarea>
     </div>
 
-    <div class="mb-3">
-      <label class="form-label">Categoría:</label>
-      <input [(ngModel)]="receta.categoria" name="categoria" class="form-control">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label fw-semibold">Categoría:</label>
+        <input [(ngModel)]="receta.categoria" name="categoria" class="form-control border-1"
+          placeholder="Ej. Postre, Ensalada" />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label fw-semibold">Imagen URL:</label>
+        <input [(ngModel)]="receta.imagen_url" name="imagen_url" class="form-control border-1" placeholder="https://" />
+      </div>
     </div>
 
-    <div class="mb-3">
-      <label class="form-label">Imagen URL:</label>
-      <input [(ngModel)]="receta.imagen_url" name="imagen_url" class="form-control">
+    <div class="d-flex justify-content-end">
+      <button type="submit" class="btn btn-purple btn-outline-purple me-2">
+        💾 Guardar
+      </button>
+      <a routerLink="/recetas" class="btn btn-outline-purple">
+        ↩️ Volver
+      </a>
     </div>
-
-    <button type="submit" class="btn btn-success" >💾 Guardar</button>
-    <a routerLink="/recetas" class="btn btn-secondary ms-2">↩️ Volver</a>
   </form>
 </div>

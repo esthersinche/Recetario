@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -9,4 +9,13 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected title = 'recetas-app';
+
+  tema: 'light' | 'dark' = 'light';
+  constructor(private renderer: Renderer2) { }
+
+  toggleTheme() {
+    this.tema = this.tema === 'light' ? 'dark' : 'light';
+    this.renderer.setAttribute(document.documentElement, 'data-theme', this.tema);
+  }
+
 }

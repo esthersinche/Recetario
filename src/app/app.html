@@ -1,1 +1,7 @@
-<router-outlet></router-outlet>
+<router-outlet>
+    <div class="container py-4">
+        <button class="btn btn-outline-secondary" (click)="toggleTheme()">
+            {{ tema === 'light' ? '🌙 Modo Noche' : '☀️ Modo Día' }}
+        </button>
+    </div>
+</router-outlet>

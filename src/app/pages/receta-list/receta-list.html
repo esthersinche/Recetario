@@ -1,19 +1,30 @@
 <div class="container my-5">
-  <h2 class="mb-4 text-center">📚 Listado de Recetas</h2>
+  <h2 class="mb-4 text-center text-purple">📚 Listado de Recetas</h2>
 
-  <div class="text-end mb-3">
-    <a routerLink="/recetas/nueva" class="btn btn-success">➕ Nueva Receta</a>
+  <div class="d-flex justify-content-end mb-3">
+    <a routerLink="/recetas/nueva" class="btn btn-purple btn-sm">
+      ➕ Nueva Receta
+    </a>
   </div>
 
-  <div class="row">
-    <div class="col-md-4 mb-4" *ngFor="let receta of recetas, let i = index">
-      <div class="card h-100 shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">{{ receta.nombre }}</h5>
-          <p class="card-text"><strong>Categoría:</strong> {{ receta.categoria }}</p>
+  <div class="row g-4">
+    <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let receta of recetas; let i = index">
+      <div class="card card-purple h-100 shadow-sm rounded-2">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title text-capitalize">{{ receta.nombre }}</h5>
+          <p class="card-text mb-3">
+            <span class="badge badge-pending">{{ receta.categoria }}</span>
+          </p>
 
-          <a [routerLink]="['/recetas', receta.id]" class="btn btn-primary btn-sm me-2" (click)="obtenerRecetas()">👀 Ver Detalle</a>
-          <button (click)="eliminarReceta(receta.id!)" class="btn btn-outline-danger btn-sm" (click)="eliminarReceta(i)">🗑️ Eliminar</button>
+          <div class="mt-auto">
+            <a [routerLink]="['/recetas', receta.id]" class="btn btn-purple btn-sm btn-outline-purple me-2"
+              (click)="obtenerRecetas()">
+              👀 Ver Detalles
+            </a>
+            <button (click)="eliminarReceta(receta.id!)" class="btn btn-outline-danger btn-sm">
+              🗑️ Eliminar
+            </button>
+          </div>
         </div>
       </div>
     </div>
