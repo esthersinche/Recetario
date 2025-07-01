@@ -10,9 +10,10 @@ app.use(bodyParser.json());
 // Conexión a la base de datos 
 const conexion = mysql.createConnection (
 	{ 	
-        host: 'localhost', 
+        host: 'localhost',
+        port: 3306, //usando phpmyadmin con xampp
 		user: 'root',	
-		password: 'Bugambilia$1305', 
+		password: '', 
 		database: 'bd_recetas' 
 	}
 );
