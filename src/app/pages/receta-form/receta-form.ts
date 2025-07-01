@@ -26,10 +26,17 @@ export class RecetaForm {
   ) {}
 
   guardarReceta() {
-    console.log(this.receta);
-    this.recetaService.createReceta(this.receta).subscribe(() => {
-      // Cuando guarde, vuelve a la lista
+  console.log(this.receta); // Ya lo vimos que imprime bien
+
+  this.recetaService.createReceta(this.receta).subscribe({
+    next: (res) => {
+      console.log('Receta guardada', res);
       this.router.navigate(['/recetas']);
-    });
+    },
+    error: (err) => {
+      console.error('Error al guardar receta', err);
+    }
+  });
+
   }
 }
