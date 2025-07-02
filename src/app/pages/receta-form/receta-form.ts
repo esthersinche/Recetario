@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 import { RecetaService, Receta } from '../../services/receta';
 
 @Component({
   standalone: true,
   selector: 'app-receta-form',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,RouterModule],
   templateUrl: './receta-form.html',
 })
 export class RecetaForm {

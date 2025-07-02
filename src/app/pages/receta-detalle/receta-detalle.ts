@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 import { RecetaService, Receta } from '../../services/receta';
 
 @Component({
   standalone: true,
   selector: 'app-receta-detalle',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule ],
   templateUrl: './receta-detalle.html',
 })
 export class RecetaDetalle {
