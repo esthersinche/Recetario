@@ -13,7 +13,7 @@ const conexion = mysql.createConnection (
         host: 'localhost',
         port: 3306, //usando phpmyadmin con xampp
 		user: 'root',	
-		password: '', 
+		password: 'contrasena', 
 		database: 'bd_recetas' 
 	}
 );
