@@ -2,29 +2,29 @@ const express= require('express');
 const mysql= require('mysql2');
 const cors= require('cors');
 
-const bodyParser = require('body-parser'); 
-const app = express(); 
-app.use(cors()); 
-app.use(bodyParser.json()); 
+const bodyParser = require('body-parser');
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
 
-// Conexión a la base de datos 
+// Conexión a la base de datos
 const conexion = mysql.createConnection (
-	{ 	
+	{
         host: 'localhost',
         port: 3306, //usando phpmyadmin con xampp
-		user: 'root',	
-		password: 'contrasena', 
-		database: 'bd_recetas' 
+		user: 'root',
+		password: '',
+		database: 'bd_recetas'
 	}
 );
 
 conexion.connect (
-	(err) => { 
+	(err) => {
 		if (err) {
-			console.error('Error de conexión:', err); 
-			return; 
-		} 
-		console.log('Conectado a la base de datos MySQL'); 
+			console.error('Error de conexión:', err);
+			return;
+		}
+		console.log('Conectado a la base de datos MySQL');
 	}
 );
 
@@ -33,34 +33,34 @@ conexion.connect (
 //obtener
 app.get
 (
-	'/api/empleados', (req, res) => 
-	{ 
+	'/api/empleados', (req, res) =>
+	{
 		conexion.query
-		('SELECT * FROM empleado', (err, resultados) => 
-			{ 
-				if (err) return res.status(500).send(err); 				res.json(resultados); 
+		('SELECT * FROM empleado', (err, resultados) =>
+			{
+				if (err) return res.status(500).send(err); 				res.json(resultados);
 			}
-		); 
+		);
 	}
 );
 
 //agregar
 app.post
 (
-	'/api/empleados', (req, res) => 
-	{ 
-		const { nome, sueldo } = req.body; 
+	'/api/empleados', (req, res) =>
+	{
+		const { nome, sueldo } = req.body;
 		const sql = 'INSERT INTO empleado ( nome, sueldo) VALUES (?, ?)'; 			conexion.query
 		(
-			sql, [ nome, sueldo], (err) => 
-			{ 
+			sql, [ nome, sueldo], (err) =>
+			{
 				if (err) return res.status(500).send(err); 						res.json
 				(
 					{ mensaje: "Empleado agregado correctamente" }
-				); 
-				//res.send('Empleado agregado correctamente'); 
+				);
+				//res.send('Empleado agregado correctamente');
 			}
-		); 
+		);
 	}
 );
 
@@ -88,7 +88,7 @@ app.get('/api/recetas/:id', (req, res) => {
     conexion.query(
         'SELECT * FROM receta WHERE id = ?', [id], (err, resultado) =>{
             if (err) {
-                return res.status(500).send(err);               
+                return res.status(500).send(err);
             }
             res.json(resultado[0]);
         }
@@ -103,7 +103,7 @@ app.post('/api/recetas', (req, res) => {
         'INSERT INTO receta (nombre, ingredientes, preparacion, categoria, imagen_url) VALUES (?, ?, ?, ?, ?)',
         [nombre, ingredientes, preparacion, categoria, imagen_url], (err) => {
             if (err) {
-                return res.status(500).send(err);               
+                return res.status(500).send(err);
             }
             res.json({mensaje: "Receta agregada correctamente"});
         }
@@ -132,7 +132,7 @@ app.delete('/api/recetas/:id', (req, res) => {
     conexion.query(
         'DELETE FROM receta WHERE id = ?', [id], (err) => {
             if (err) {
-                return res.status(500).send(err);              
+                return res.status(500).send(err);
             }
             res.json({mensaje: "Receta eliminada con éxito."});
         }

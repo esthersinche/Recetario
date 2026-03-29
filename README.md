@@ -1,59 +1,65 @@
-# RecetasApp
+# RecetasApp (Version Inicial)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0.
+Aplicacion web para gestionar recetas de cocina: crear, listar, ver detalle, editar y eliminar.
 
-## Development server
+## Tecnologias
 
-To start a local development server, run:
+- Angular 20 (frontend)
+- Node.js + Express (backend)
+- MySQL (base de datos)
 
-```bash
-ng serve
+## Estructura basica
+
+- `src/`: aplicacion Angular
+- `index.js`: API REST y conexion a MySQL
+
+## Requisitos
+
+- Node.js y npm
+- MySQL en `localhost:3306`
+- Base de datos `bd_recetas` con tabla `receta`
+
+SQL sugerido:
+
+```sql
+CREATE DATABASE IF NOT EXISTS bd_recetas;
+USE bd_recetas;
+
+CREATE TABLE IF NOT EXISTS receta (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(255) NOT NULL,
+  ingredientes LONGTEXT NOT NULL,
+  preparacion LONGTEXT NOT NULL,
+  categoria VARCHAR(100) NOT NULL,
+  imagen_url VARCHAR(500)
+);
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Ejecucion
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1. Iniciar backend (terminal 1):
 
 ```bash
-ng generate component component-name
+node index.js
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+2. Iniciar frontend (terminal 2):
 
 ```bash
-ng generate --help
+npm start
 ```
 
-## Building
+Frontend: `http://localhost:4200`  
+API: `http://localhost:3000/api/recetas`
 
-To build the project run:
+## Endpoints disponibles
 
-```bash
-ng build
-```
+- `GET /api/recetas`
+- `GET /api/recetas/:id`
+- `POST /api/recetas`
+- `PUT /api/recetas/:id`
+- `DELETE /api/recetas/:id`
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Nota
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Si MySQL tiene contrasena, actualizar `password` en `index.js`.
